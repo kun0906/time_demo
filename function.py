@@ -2,11 +2,13 @@
 
 import numpy as np
 
-# @scalene_redirect_profile
-# @profile
-def foo(is_numpy_arr = True):
+def foo(is_numpy = True):
+    """ if we use numpy or not
 
-    if is_numpy_arr:
+    :param is_numpy:
+    :return:
+    """
+    if is_numpy:
         Xrow = np.ones((100, 5))
         X = np.ones((600, 5))
         s = np.matmul(X, Xrow.T)
@@ -16,6 +18,5 @@ def foo(is_numpy_arr = True):
         # time.sleep(0.001)
         for i in range(100000):
             s += i
-        del s
 
     return s
