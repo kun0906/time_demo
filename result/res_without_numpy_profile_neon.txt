@@ -1,0 +1,231 @@
+ssh://ky2440@neon.cs.uchicago.edu:22/usr/local/bin/python3.7 -u /home/ky2440/time_demo/main_profile.py
+===========================================================================
+2 ***don't use numpy array
+
+1) serial
+         82 function calls in 0.135 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+       20    0.135    0.007    0.135    0.007 function.py:5(foo)
+        1    0.000    0.000    0.135    0.135 serial.py:5(serial_func)
+       20    0.000    0.000    0.000    0.000 {built-in method time.process_time}
+       20    0.000    0.000    0.000    0.000 {built-in method time.time}
+       20    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+
+
+time                : 0.00689+/-0.00114 ['0.00913', '0.00834', '0.00763', '0.00720', '0.00685', '0.00648', '0.00617', '0.00589', '0.00570', '0.00547']
+process_time        : 0.00662+/-0.00107 ['0.00865', '0.00805', '0.00744', '0.00694', '0.00651', '0.00621', '0.00594', '0.00569', '0.00546', '0.00530']
+
+---------------------------------------------
+2) parallel
+         550 function calls in 0.191 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.000    0.000 _base.py:312(__init__)
+        2    0.000    0.000    0.000    0.000 _base.py:382(__get_result)
+        1    0.000    0.000    0.000    0.000 _base.py:388(add_done_callback)
+        2    0.000    0.000    0.189    0.095 _base.py:405(result)
+        2    0.000    0.000    0.000    0.000 _bootlocale.py:33(getpreferredencoding)
+       10    0.000    0.000    0.000    0.000 _collections_abc.py:657(get)
+        1    0.000    0.000    0.000    0.000 _collections_abc.py:664(__contains__)
+        1    0.000    0.000    0.000    0.000 _memmapping_reducer.py:115(__init__)
+        2    0.000    0.000    0.000    0.000 _memmapping_reducer.py:168(_get_temp_dir)
+        1    0.000    0.000    0.000    0.000 _memmapping_reducer.py:338(__init__)
+        1    0.000    0.000    0.000    0.000 _memmapping_reducer.py:473(get_memmapping_reducers)
+        1    0.000    0.000    0.000    0.000 _memmapping_reducer.py:518(__init__)
+        1    0.000    0.000    0.000    0.000 _memmapping_reducer.py:533(set_current_context)
+        2    0.000    0.000    0.000    0.000 _memmapping_reducer.py:537(register_new_context)
+        1    0.000    0.000    0.000    0.000 _memmapping_reducer.py:567(_unregister_context)
+        2    0.000    0.000    0.000    0.000 _memmapping_reducer.py:583(register_folder_finalizer)
+        1    0.000    0.000    0.000    0.000 _memmapping_reducer.py:612(_unlink_temporary_resources)
+        1    0.000    0.000    0.000    0.000 _memmapping_reducer.py:644(_try_delete_folder)
+        1    0.000    0.000    0.000    0.000 _parallel_backends.py:124(get_nested_backend)
+        2    0.000    0.000    0.000    0.000 _parallel_backends.py:137(retrieval_context)
+        1    0.000    0.000    0.000    0.000 _parallel_backends.py:154(_prepare_worker_env)
+        2    0.000    0.000    0.000    0.000 _parallel_backends.py:185(in_main_thread)
+        2    0.000    0.000    0.000    0.000 _parallel_backends.py:280(__init__)
+        3    0.000    0.000    0.000    0.000 _parallel_backends.py:34(__init__)
+        1    0.000    0.000    0.000    0.000 _parallel_backends.py:361(reset_batch_stats)
+        1    0.000    0.000    0.001    0.001 _parallel_backends.py:486(configure)
+        2    0.000    0.000    0.000    0.000 _parallel_backends.py:501(effective_n_jobs)
+        1    0.000    0.000    0.000    0.000 _parallel_backends.py:529(apply_async)
+        2    0.000    0.000    0.189    0.095 _parallel_backends.py:537(wrap_future_result)
+        1    0.000    0.000    0.000    0.000 _parallel_backends.py:546(terminate)
+        1    0.000    0.000    0.000    0.000 _parallel_backends.py:590(__init__)
+        1    0.000    0.000    0.000    0.000 _parallel_backends.py:80(start_call)
+        1    0.000    0.000    0.000    0.000 _parallel_backends.py:83(stop_call)
+        2    0.000    0.000    0.000    0.000 abc.py:137(__instancecheck__)
+        1    0.000    0.000    0.000    0.000 abc.py:141(__subclasscheck__)
+        2    0.000    0.000    0.000    0.000 codecs.py:260(__init__)
+        2    0.000    0.000    0.000    0.000 codecs.py:309(__init__)
+        2    0.000    0.000    0.000    0.000 codecs.py:319(decode)
+        1    0.000    0.000    0.000    0.000 connection.py:134(_check_closed)
+        1    0.000    0.000    0.000    0.000 connection.py:142(_check_writable)
+        1    0.000    0.000    0.000    0.000 connection.py:181(send_bytes)
+        1    0.000    0.000    0.000    0.000 connection.py:365(_send)
+        1    0.000    0.000    0.000    0.000 connection.py:390(_send_bytes)
+        1    0.000    0.000    0.000    0.000 context.py:110(cpu_count)
+        1    0.000    0.000    0.000    0.000 context.py:169(_cpu_count_user)
+        1    0.000    0.000    0.000    0.000 context.py:232(get_context)
+        1    0.000    0.000    0.000    0.000 context.py:40(cpu_count)
+        1    0.000    0.000    0.000    0.000 contextlib.py:107(__enter__)
+        1    0.000    0.000    0.000    0.000 contextlib.py:116(__exit__)
+        1    0.000    0.000    0.000    0.000 contextlib.py:237(helper)
+        1    0.000    0.000    0.000    0.000 contextlib.py:81(__init__)
+        1    0.000    0.000    0.000    0.000 disk.py:105(delete_folder)
+        1    0.000    0.000    0.000    0.000 disk.py:42(memstr_to_bytes)
+        1    0.000    0.000    0.000    0.000 executor.py:19(get_memmapping_executor)
+        1    0.000    0.000    0.000    0.000 executor.py:25(get_memmapping_executor)
+        1    0.000    0.000    0.000    0.000 functools.py:37(update_wrapper)
+        1    0.000    0.000    0.000    0.000 functools.py:67(wraps)
+        9    0.000    0.000    0.000    0.000 genericpath.py:16(exists)
+        1    0.000    0.000    0.000    0.000 genericpath.py:39(isdir)
+        1    0.000    0.000    0.000    0.000 genericpath.py:87(samestat)
+        1    0.000    0.000    0.000    0.000 logger.py:23(_squeeze_time)
+        1    0.000    0.000    0.000    0.000 logger.py:39(short_format_time)
+        2    0.000    0.000    0.000    0.000 os.py:196(makedirs)
+       11    0.000    0.000    0.000    0.000 os.py:673(__getitem__)
+       11    0.000    0.000    0.000    0.000 os.py:751(encode)
+        1    0.000    0.000    0.000    0.000 parallel.py:245(__init__)
+        3    0.000    0.000    0.000    0.000 parallel.py:275(__len__)
+        1    0.000    0.000    0.000    0.000 parallel.py:321(delayed)
+        1    0.000    0.000    0.000    0.000 parallel.py:324(delayed_function)
+        1    0.000    0.000    0.000    0.000 parallel.py:345(__init__)
+        1    0.000    0.000    0.000    0.000 parallel.py:49(<genexpr>)
+        1    0.000    0.000    0.000    0.000 parallel.py:637(__init__)
+        1    0.000    0.000    0.001    0.001 parallel.py:721(__enter__)
+        1    0.000    0.000    0.000    0.000 parallel.py:726(__exit__)
+        1    0.000    0.000    0.001    0.001 parallel.py:730(_initialize_backend)
+        1    0.000    0.000    0.000    0.000 parallel.py:750(_effective_n_jobs)
+        1    0.000    0.000    0.000    0.000 parallel.py:755(_terminate_backend)
+        1    0.000    0.000    0.000    0.000 parallel.py:759(_dispatch)
+        1    0.000    0.000    0.000    0.000 parallel.py:76(get_active_backend)
+        2    0.000    0.000    0.000    0.000 parallel.py:796(dispatch_one_batch)
+        1    0.000    0.000    0.191    0.191 parallel.py:8(parallel_func)
+        2    0.000    0.000    0.000    0.000 parallel.py:862(_print)
+        1    0.000    0.000    0.189    0.189 parallel.py:918(retrieve)
+        1    0.000    0.000    0.190    0.190 parallel.py:958(__call__)
+        2    0.000    0.000    0.000    0.000 pickle.py:302(whichmodule)
+        2    0.000    0.000    0.000    0.000 posixpath.py:104(split)
+        2    0.000    0.000    0.000    0.000 posixpath.py:232(expanduser)
+        2    0.000    0.000    0.000    0.000 posixpath.py:338(normpath)
+        2    0.000    0.000    0.000    0.000 posixpath.py:376(abspath)
+        8    0.000    0.000    0.000    0.000 posixpath.py:41(_get_sep)
+        2    0.000    0.000    0.000    0.000 posixpath.py:64(isabs)
+        4    0.000    0.000    0.000    0.000 posixpath.py:75(join)
+        2    0.000    0.000    0.000    0.000 process.py:189(daemon)
+        2    0.000    0.000    0.000    0.000 process.py:36(current_process)
+        1    0.000    0.000    0.000    0.000 process_executor.py:1034(_start_executor_manager_thread)
+        1    0.000    0.000    0.000    0.000 process_executor.py:1091(_ensure_executor_running)
+        1    0.000    0.000    0.000    0.000 process_executor.py:1099(submit)
+        1    0.000    0.000    0.000    0.000 process_executor.py:135(wakeup)
+        1    0.000    0.000    0.000    0.000 process_executor.py:257(__init__)
+        2    0.000    0.000    0.000    0.000 queue.py:121(put)
+        3    0.000    0.000    0.000    0.000 queue.py:153(get)
+        1    0.000    0.000    0.000    0.000 queue.py:205(_init)
+        3    0.000    0.000    0.000    0.000 queue.py:208(_qsize)
+        2    0.000    0.000    0.000    0.000 queue.py:212(_put)
+        1    0.000    0.000    0.000    0.000 queue.py:216(_get)
+        1    0.000    0.000    0.000    0.000 queue.py:33(__init__)
+        3    0.000    0.000    0.000    0.000 resource_tracker.py:179(_check_alive)
+        2    0.000    0.000    0.000    0.000 resource_tracker.py:188(register)
+        1    0.000    0.000    0.000    0.000 resource_tracker.py:193(unregister)
+        6    0.000    0.000    0.000    0.000 resource_tracker.py:203(_send)
+        3    0.000    0.000    0.000    0.000 resource_tracker.py:94(ensure_running)
+        1    0.000    0.000    0.000    0.000 reusable_executor.py:105(get_reusable_executor)
+        1    0.000    0.000    0.000    0.000 reusable_executor.py:175(submit)
+        1    0.000    0.000    0.000    0.000 reusable_executor.py:180(_resize)
+        1    0.000    0.000    0.000    0.000 shutil.py:404(_rmtree_safe_fd)
+        1    0.000    0.000    0.000    0.000 shutil.py:456(rmtree)
+        1    0.000    0.000    0.000    0.000 synchronize.py:103(__enter__)
+        1    0.000    0.000    0.000    0.000 synchronize.py:106(__exit__)
+        2    0.000    0.000    0.000    0.000 threading.py:1214(current_thread)
+        4    0.000    0.000    0.000    0.000 threading.py:216(__init__)
+        8    0.000    0.000    0.000    0.000 threading.py:240(__enter__)
+        8    0.000    0.000    0.000    0.000 threading.py:243(__exit__)
+        3    0.000    0.000    0.000    0.000 threading.py:255(_is_owned)
+        2    0.000    0.000    0.189    0.095 threading.py:264(wait)
+        3    0.000    0.000    0.000    0.000 threading.py:335(notify)
+        2    0.000    0.000    0.000    0.000 threading.py:75(RLock)
+        2    0.000    0.000    0.000    0.000 util.py:48(debug)
+        3    0.000    0.000    0.000    0.000 uuid.py:121(__init__)
+        3    0.000    0.000    0.000    0.000 uuid.py:318(hex)
+        3    0.000    0.000    0.000    0.000 uuid.py:757(uuid4)
+        2    0.000    0.000    0.000    0.000 {built-in method _abc._abc_instancecheck}
+        1    0.000    0.000    0.000    0.000 {built-in method _abc._abc_subclasscheck}
+        2    0.000    0.000    0.000    0.000 {built-in method _codecs.utf_8_decode}
+        1    0.000    0.000    0.000    0.000 {built-in method _stat.S_ISDIR}
+        1    0.000    0.000    0.000    0.000 {built-in method _struct.pack}
+        3    0.000    0.000    0.000    0.000 {built-in method _thread.allocate_lock}
+        2    0.000    0.000    0.000    0.000 {built-in method _thread.get_ident}
+        2    0.000    0.000    0.000    0.000 {built-in method atexit.register}
+        1    0.000    0.000    0.000    0.000 {built-in method atexit.unregister}
+       16    0.000    0.000    0.000    0.000 {built-in method builtins.getattr}
+        6    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+       35    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.iter}
+       40    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        4    0.000    0.000    0.000    0.000 {built-in method builtins.max}
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.min}
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.next}
+        5    0.000    0.000    0.000    0.000 {built-in method builtins.setattr}
+        3    0.000    0.000    0.000    0.000 {built-in method from_bytes}
+        2    0.000    0.000    0.000    0.000 {built-in method io.open}
+        1    0.000    0.000    0.000    0.000 {built-in method posix.close}
+        1    0.000    0.000    0.000    0.000 {built-in method posix.cpu_count}
+       14    0.000    0.000    0.000    0.000 {built-in method posix.fspath}
+        1    0.000    0.000    0.000    0.000 {built-in method posix.fstat}
+        2    0.000    0.000    0.000    0.000 {built-in method posix.getpid}
+        2    0.000    0.000    0.000    0.000 {built-in method posix.listdir}
+        1    0.000    0.000    0.000    0.000 {built-in method posix.lstat}
+        2    0.000    0.000    0.000    0.000 {built-in method posix.mkdir}
+        1    0.000    0.000    0.000    0.000 {built-in method posix.open}
+        1    0.000    0.000    0.000    0.000 {built-in method posix.rmdir}
+        1    0.000    0.000    0.000    0.000 {built-in method posix.scandir}
+        1    0.000    0.000    0.000    0.000 {built-in method posix.sched_getaffinity}
+        2    0.000    0.000    0.000    0.000 {built-in method posix.statvfs}
+       10    0.000    0.000    0.000    0.000 {built-in method posix.stat}
+        3    0.000    0.000    0.000    0.000 {built-in method posix.urandom}
+        7    0.000    0.000    0.000    0.000 {built-in method posix.write}
+        3    0.000    0.000    0.000    0.000 {built-in method time.time}
+        3    0.000    0.000    0.000    0.000 {method '__enter__' of '_thread.RLock' objects}
+        5    0.000    0.000    0.000    0.000 {method '__enter__' of '_thread.lock' objects}
+        3    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.RLock' objects}
+        5    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.lock' objects}
+        2    0.000    0.000    0.000    0.000 {method '_acquire_restore' of '_thread.RLock' objects}
+        2    0.000    0.000    0.000    0.000 {method '_is_owned' of '_thread.RLock' objects}
+        2    0.000    0.000    0.000    0.000 {method '_release_save' of '_thread.RLock' objects}
+        1    0.000    0.000    0.000    0.000 {method 'acquire' of '_multiprocessing.SemLock' objects}
+        7    0.189    0.027    0.189    0.027 {method 'acquire' of '_thread.lock' objects}
+        4    0.000    0.000    0.000    0.000 {method 'append' of 'collections.deque' objects}
+        5    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'copy' of 'dict' objects}
+        3    0.000    0.000    0.000    0.000 {method 'count' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+       17    0.000    0.000    0.000    0.000 {method 'encode' of 'str' objects}
+        4    0.000    0.000    0.000    0.000 {method 'endswith' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 {method 'extend' of 'list' objects}
+       10    0.000    0.000    0.000    0.000 {method 'format' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
+        2    0.000    0.000    0.000    0.000 {method 'join' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+        2    0.000    0.000    0.000    0.000 {method 'pop' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'popleft' of 'collections.deque' objects}
+        2    0.000    0.000    0.000    0.000 {method 'read' of '_io.TextIOWrapper' objects}
+        1    0.000    0.000    0.000    0.000 {method 'release' of '_multiprocessing.SemLock' objects}
+        2    0.000    0.000    0.000    0.000 {method 'rfind' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 {method 'rstrip' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+       13    0.000    0.000    0.000    0.000 {method 'startswith' of 'str' objects}
+        3    0.000    0.000    0.000    0.000 {method 'update' of 'dict' objects}
+
+
+time                : 0.00932+/-0.00137 ['0.01232', '0.01081', '0.01008', '0.00965', '0.00913', '0.00902', '0.00846', '0.00821', '0.00792', '0.00762']
+process_time        : 0.00906+/-0.00129 ['0.01135', '0.01078', '0.01013', '0.00957', '0.00906', '0.00856', '0.00825', '0.00799', '0.00755', '0.00739']
+
