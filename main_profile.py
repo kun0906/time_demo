@@ -1,8 +1,10 @@
 """
     profile
 """
+import pstats
+
 import numpy as np
-from parallel import parallel_func
+from parall import parallel_func
 from serial import serial_func
 import cProfile
 
@@ -16,7 +18,8 @@ def main(is_numpy=False):
     pr.enable()
     res = serial_func(n_repeats, is_numpy)
     pr.disable()
-    pr.print_stats()
+    ps = pstats.Stats(pr).sort_stats('line')    #  cumulative
+    ps.print_stats()
     for name_, vs_ in res:
         print(f'{name_:20}: {np.mean(vs_):.5f}+/-{np.std(vs_):.5f}', [f'{v:.5f}' for v in vs_])
 
@@ -25,7 +28,8 @@ def main(is_numpy=False):
     pr.enable()
     res = parallel_func(n_repeats, n_jobs=2, is_numpy=is_numpy)
     pr.disable()
-    pr.print_stats()
+    ps = pstats.Stats(pr).sort_stats('line')
+    ps.print_stats()
     for (name_, vs_) in res:
         print(f'{name_:20}: {np.mean(vs_):.5f}+/-{np.std(vs_):.5f}', [f'{v:.5f}' for v in vs_])
 
