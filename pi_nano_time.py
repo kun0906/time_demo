@@ -209,5 +209,5 @@ for k, v in results.items():
 
 
 
-show_data(results, name='Different Xrow size')
+show_data(results, name='matmul(X, Xrow.T), X=(600, 40)')
 
