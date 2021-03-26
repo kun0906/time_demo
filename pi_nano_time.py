@@ -61,19 +61,22 @@ def getGaussianGram(Xrow, Xcol, sigma, goFast=1):
     return K
 
 
-def foo(nums=50):
+def foo(nums=50, m=2500):
     s = 0
-    is_numpy = 2
+    is_numpy = 1
     if is_numpy==1:
         Xrow = np.ones((100, 20))
-        X = np.ones((600, 20))
+        X = np.ones((m, 20))
         for i in range(nums):
             s = np.matmul(X, Xrow.T)
 
         # del Xrow, X
     elif is_numpy==2:
-        X = np.ones((600, 20))
-        Xrow = np.ones((100, 20))
+        # X = np.ones((600, 20))
+        # Xrow = np.ones((100, 20))
+        d = 40
+        X = np.random.multivariate_normal([0] * d, np.diag([1] * d), 600)  # mxd
+        Xrow = np.random.multivariate_normal([0] * d, np.diag([1] * d), 100)  # mxd
         getGaussianGram(X, Xrow, sigma=0.1)
 
     else:
@@ -82,10 +85,10 @@ def foo(nums=50):
             s += i
 
 
-def time_timing(name=''):
+def time_timing(name='', m=50):
     start = time.time()
 
-    foo()
+    foo(m=m)
     # time.sleep(1)
 
     end = time.time()
@@ -93,11 +96,11 @@ def time_timing(name=''):
     return end - start
 
 
-def ctime_timing(name=''):
+def ctime_timing(name='', m=50):
     pr = cProfile.Profile(time.time)
     pr.enable()
 
-    foo()
+    foo(m=m)
     # time.sleep(1)
 
     pr.disable()
@@ -106,11 +109,11 @@ def ctime_timing(name=''):
     return ps.total_tt
 
 
-def process_timing(name=''):
+def process_timing(name='', m=50):
     pr = cProfile.Profile(time.process_time)
     pr.enable()
 
-    foo()
+    foo(m=m)
     # time.sleep(1)
 
     pr.disable()
@@ -119,11 +122,11 @@ def process_timing(name=''):
     return ps.total_tt
 
 
-def perf_counter_timing(name=''):
+def perf_counter_timing(name='',m =50):
     pr = cProfile.Profile(time.perf_counter)
     pr.enable()
 
-    foo()
+    foo(m=m)
     # time.sleep(1)
 
     pr.disable()
@@ -132,24 +135,79 @@ def perf_counter_timing(name=''):
     return ps.total_tt
 
 
+def show_data(res, name=''):
+    from matplotlib import pyplot as plt
+    plt.close('all')
+
+    for i, (name_, vs_) in enumerate(res.items()):
+        x = [v_[0] for v_ in vs_]
+        y =  [v_[1] for v_ in vs_]
+        plt.plot(x, y, label=name_)
+
+    plt.title(name)
+    plt.ylim([0, 0.1])
+    plt.xlabel('size of Xrow')
+    plt.ylabel('time (s)')
+    plt.legend(loc = 'upper right')
+
+    out_file = f'result/{name}.png'
+    if not os.path.exists(os.path.dirname(out_file)):
+        os.makedirs(os.path.dirname(out_file))
+    plt.savefig(out_file)
+    plt.show()
+
 n_repeats = 20
 
-res = []
-for i in range(n_repeats):
-    res.append(time_timing())
-print(f'time_time: {np.mean(res):.5f}+/-{np.std(res):.5f}')
+results = {}
+for idx, m in enumerate([10, 50, 100, 200, 500, 1000, 2000, 3000, 5000]):
+    print(f'\n***m={m}')
+    # res = []
+    # for i in range(n_repeats):
+    #     res.append(time_timing(m=m))
+    # print(f'time_time: {np.mean(res):.5f}+/-{np.std(res):.5f}')
+    # key = 'time_time'
+    # if key not in results.keys():
+    #     results[key] = [(m, np.mean(res), np.std(res))]
+    # else:
+    #     results[key].append((m, np.mean(res), np.std(res)))
+    #
+    # res = []
+    # for i in range(n_repeats):
+    #     res.append(ctime_timing(m=m))
+    # print(f'cprofile_time: {np.mean(res):.5f}+/-{np.std(res):.5f}')
+    # key = 'cprofile_time'
+    # if key not in results.keys():
+    #     results[key] = [(m, np.mean(res), np.std(res))]
+    # else:
+    #     results[key].append((m, np.mean(res), np.std(res)))
 
-res = []
-for i in range(n_repeats):
-    res.append(ctime_timing())
-print(f'cprofile time: {np.mean(res):.5f}+/-{np.std(res):.5f}')
+    res = []
+    for i in range(n_repeats):
+        res.append(process_timing(m=m))
+    print(f'cprofile_process_time: {np.mean(res):.5f}+/-{np.std(res):.5f}')
+    key = 'cprofile_process_time'
+    if key not in results.keys():
+        results[key] = [(m, np.mean(res), np.std(res))]
+    else:
+        results[key].append((m, np.mean(res), np.std(res)))
 
-res = []
-for i in range(n_repeats):
-    res.append(process_timing())
-print(f'cprofile process_time: {np.mean(res):.5f}+/-{np.std(res):.5f}')
+    res = []
+    for i in range(n_repeats):
+        res.append(perf_counter_timing(m=m))
+    print(f'cprofile_perf_counter: {np.mean(res):.5f}+/-{np.std(res):.5f}')
+    key = 'cprofile_perf_counter'
+    if key not in results.keys():
+        results[key] = [(m, np.mean(res), np.std(res))]
+    else:
+        results[key].append((m, np.mean(res), np.std(res)))
 
-res = []
-for i in range(n_repeats):
-    res.append(perf_counter_timing())
-print(f'cprofile perf_counter: {np.mean(res):.5f}+/-{np.std(res):.5f}')
+
+print('\n')
+for k, v in results.items():
+    print(f'{k}: {v}')
+
+
+
+
+show_data(results, name='Different Xrow size')
+
