@@ -1,6 +1,8 @@
 # from func_timeout import func_set_timeout
 
+
 FUNC_TIMEOUT = 3* 60
+
 
 # @func_set_timeout(FUNC_TIMEOUT)  # seconds
 def foo(is_numpy = True):
@@ -10,7 +12,6 @@ def foo(is_numpy = True):
     :return:
     """
     if is_numpy:
-
         import numpy as np
         from threadpoolctl import threadpool_limits
 
@@ -21,7 +22,7 @@ def foo(is_numpy = True):
 
         Xrow = np.ones((100, 20))
         X = np.ones((600, 20))
-        for i in range(1000):   # 1000
+        for i in range(100):   # 1000
             s = np.matmul(X, Xrow.T)
     else:
         # don't use numpy array
