@@ -45,9 +45,9 @@ def main(m=1000, n_repeats=10):
 if __name__ == '__main__':
 	res = []
 	with open('a.txt', 'w') as f:
-		for m in [600, 1000, 2000, 5000, 10000, 100000, 300000]:
+		for m in [50000]: # [600, 1000, 2000, 5000, 10000, 30000, 50000, 100000, 300000]:
 			# 600*8*5 / T
-			mu, std = main(m, n_repeats=1)
+			mu, std = main(m, n_repeats=100)
 			s = f'{m * 8 * 5 / T:.5f}GB'
 			s1 = f'{5000 * m * 8/ T:.5f}GB' # X * Xrow.T and the shape is (5000, m)
 			vs = (m, mu, std, s, s1)
