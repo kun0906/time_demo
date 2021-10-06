@@ -122,7 +122,7 @@ def process_timing(name='', m=50):
     return ps.total_tt
 
 
-def perf_counter_timing(name='',m =50):
+def perf_counter_timing(name='',m =500):
     pr = cProfile.Profile(time.perf_counter)
     pr.enable()
 
@@ -209,5 +209,5 @@ for k, v in results.items():
 
 
 
-show_data(results, name='matmul(X, Xrow.T), X=(600, 40)')
+show_data(results, name='matmul(X, Xrow.T), X=(600, 20)')
 
