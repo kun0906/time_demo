@@ -1,0 +1,33 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c28041d... append to b.txt
+>>>>>>> 7a1eeab... Rfevert "append to b.txt"
+hello word b
+
+
+afdafdasfas
+
+
+adfasf
+<<<<<<< HEAD
+=======
+hello word b
+>>>>>>> dbb7b3a... rebase and modify message
+=======
+<<<<<<< HEAD
+=======
+hello word b
+>>>>>>> dbb7b3a... rebase and modify message
+=======
+>>>>>>> c28041d... append to b.txt
+<<<<<<< HEAD
+>>>>>>> 1a93680... Revert "afsdf ppend to b.txt"
+=======
+=======
+hello word b
+>>>>>>> parent of 8bec942 (append to b.txt)
+>>>>>>> 7a1eeab... Rfevert "append to b.txt"
