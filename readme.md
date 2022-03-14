@@ -29,5 +29,6 @@
     
 
 add '.gitignore'
+....
 
 
